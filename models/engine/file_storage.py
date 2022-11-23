@@ -24,6 +24,12 @@ class FileStorage():
     __file_path = "file.json"
     __objects = {}
 
+    def resetStorage(self):
+        """Resets FileStorage data."""
+        FileStorage._FileStorage__objects = {}
+        if os.path.isfile(FileStorage._FileStorage__file_path):
+            os.remove(FileStorage._FileStorage__file_path)
+
     def all(self):
         """
         returns the dictionary __objects

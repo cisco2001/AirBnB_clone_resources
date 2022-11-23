@@ -16,6 +16,12 @@ class TestBase(unittest.TestCase):
     def setUp(self):
         pass
 
+    def resetStorage(self):
+        """Resets FileStorage data."""
+        FileStorage._FileStorage__objects = {}
+        if os.path.isfile(FileStorage._FileStorage__file_path):
+            os.remove(FileStorage._FileStorage__file_path)
+
     def tearDown(self) -> None:
         """Resets FileStorage data."""
         FileStorage._FileStorage__objects = {}

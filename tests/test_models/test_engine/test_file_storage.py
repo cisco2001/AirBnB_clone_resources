@@ -27,6 +27,12 @@ class TestFileStorage_instantiation(unittest.TestCase):
         with self.assertRaises(TypeError):
             FileStorage(None)
 
+    def resetStorage(self):
+        """Resets FileStorage data."""
+        FileStorage._FileStorage__objects = {}
+        if os.path.isfile(FileStorage._FileStorage__file_path):
+            os.remove(FileStorage._FileStorage__file_path)
+
     def test_FileStorage_file_path_is_private_str(self):
         self.assertEqual(str, type(FileStorage._FileStorage__file_path))
 
